@@ -153,9 +153,10 @@ button, input, textarea, select {
   padding-inline: 24px;
 }
 
-.section {
+.section, section[id] {
   padding-block: clamp(64px, 8vw, 112px);
   position: relative;
+  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
 .section-dark {

@@ -39,8 +39,8 @@
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 1fr 1.28fr;
+  gap: clamp(28px, 4vw, 56px);
   align-items: center;
   position: relative;
   z-index: 1;
@@ -52,360 +52,265 @@
   align-items: flex-start;
 }
 
-.hero-title {
-  margin-bottom: 20px;
-  color: var(--color-midnight);
-}
-
-.hero-title .highlight-blue {
-  color: var(--color-signal-blue);
-  background: linear-gradient(135deg, #1878DE 0%, #45C2FB 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subhead {
-  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+.hero-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
   font-weight: 600;
+  color: #64748B;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
   color: var(--color-midnight);
-  margin-bottom: 12px;
-  line-height: 1.4;
+  margin-bottom: 24px;
 }
 
 .hero-desc {
-  font-size: 1.12rem;
-  color: var(--color-text-muted);
-  margin-bottom: 28px;
-  max-width: 580px;
+  font-size: 1.15rem;
+  color: #536580;
   line-height: 1.65;
+  margin-bottom: 32px;
+  max-width: 540px;
 }
 
-.hero-guarantee {
-  margin-top: 22px;
+.btn-whatsapp-outline {
+  background: #FFFFFF;
+  color: #149A6A;
+  border: 1.5px solid #149A6A;
+  box-shadow: 0 2px 8px rgba(20, 154, 106, 0.08);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid var(--color-border-subtle);
-  padding: 8px 16px;
+  gap: 8px;
+  padding: 14px 24px;
   border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-base);
 }
 
-.hero-guarantee .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--color-confirm-green);
-  box-shadow: 0 0 0 3px rgba(20, 154, 106, 0.2);
+.btn-whatsapp-outline:hover {
+  background: #F0FAF5;
+  border-color: #0E7B53;
+  color: #0E7B53;
+  transform: translateY(-2px);
+}
+
+.hero-guarantee-plain {
+  font-size: 0.88rem;
+  color: #64748B;
+  margin-top: 20px;
+  font-weight: 500;
 }
 
 /* --------------------------------------------------------------------------
-   DUAL DEMO CONTAINER: WHATSAPP CHAT + BUSINESS HUD
+   SAMA A2Z HERO SHOWCASE (PHONE MOCKUP + WHAT YOUR BUSINESS SEES)
+   Exact match to brand design specification
    -------------------------------------------------------------------------- */
-.demo-stage {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background: #FFFFFF;
-  border: 1px solid var(--color-border-card);
-  border-radius: var(--radius-xl);
-  padding: 20px;
-  box-shadow: var(--shadow-xl);
-  position: relative;
-}
-
-.demo-stage-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--color-border-subtle);
-  padding-bottom: 12px;
-}
-
-.demo-tabs {
-  display: flex;
-  gap: 8px;
-}
-
-.demo-tab-btn {
-  background: none;
-  border: none;
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.demo-tab-btn.active {
-  background: var(--color-ice);
-  color: var(--color-signal-blue);
-}
-
-.demo-stage-body {
+.sama-hero-showcase {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: 350px 1fr;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  width: 100%;
 }
 
-/* Phone / WhatsApp Mockup */
-.chat-device {
-  background: #EFEAE2;
-  background-image: radial-gradient(#d6cdc4 0.75px, transparent 0.75px);
-  background-size: 16px 16px;
-  border-radius: var(--radius-md);
+/* Phone Device Frame */
+.sama-phone-device {
+  background: #FFFFFF;
+  border-radius: 28px;
+  border: 1.5px solid #E2EDF8;
+  box-shadow: 0 20px 48px -12px rgba(11, 30, 66, 0.1);
   overflow: hidden;
-  border: 1px solid #D1D7DB;
+  width: 100%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
-  height: 420px;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.chat-device-top {
-  background: #008069;
+.sama-phone-device:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 56px -10px rgba(11, 30, 66, 0.14);
+}
+
+/* Phone Header */
+.sama-phone-header {
+  background: #0B1E42;
+  padding: 16px 20px 18px;
   color: #FFFFFF;
-  padding: 10px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
-.chat-device-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.chat-avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #008069;
+.sama-phone-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
   font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.chat-name {
-  font-weight: 700;
-  font-size: 0.88rem;
+  color: #FFFFFF;
+  letter-spacing: -0.015em;
   line-height: 1.2;
 }
 
-.chat-status {
-  font-size: 0.72rem;
-  color: #D1F4EC;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.chat-status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #25D366;
-}
-
-.chat-messages {
-  flex: 1;
-  padding: 12px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.chat-bubble {
-  max-width: 88%;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.84rem;
-  line-height: 1.35;
-  position: relative;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  animation: bubblePop 0.3s ease forwards;
-}
-
-.chat-bubble.customer {
-  align-self: flex-start;
-  background: #FFFFFF;
-  color: #111B21;
-  border-top-left-radius: 0;
-}
-
-.chat-bubble.ai {
-  align-self: flex-end;
-  background: #D9FDD3;
-  color: #111B21;
-  border-top-right-radius: 0;
-}
-
-.chat-bubble .telugu-text {
-  font-family: var(--font-telugu);
-  font-size: 0.88rem;
+.sama-phone-subtitle {
+  color: #45C2FB;
+  font-size: 0.82rem;
   font-weight: 500;
-  color: #111B21;
-  margin-bottom: 2px;
+  margin-top: 3px;
+  letter-spacing: 0.01em;
 }
 
-.chat-bubble .sub-text {
-  font-size: 0.75rem;
-  color: #54656F;
-}
-
-.chat-bubble .meta {
-  font-size: 0.65rem;
-  color: #667781;
-  text-align: right;
-  margin-top: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 3px;
-}
-
-.chat-bubble-card {
-  align-self: flex-end;
+/* Phone Chat Area */
+.sama-phone-chat {
+  padding: 18px 16px 20px;
   background: #FFFFFF;
-  border-left: 4px solid var(--color-confirm-green);
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 0.8rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.chat-card-title {
-  font-weight: 700;
-  color: var(--color-confirm-green);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 2px;
-}
-
-/* Business HUD (What your business sees) */
-.business-hud {
-  background: var(--color-midnight);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  color: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.business-hud-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  padding-bottom: 10px;
-  margin-bottom: 12px;
-}
-
-.business-hud-title {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--color-sky);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hud-step-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.hud-step-item {
+/* Speech Bubbles */
+.sama-bubble {
+  border-radius: 16px;
+  padding: 12px 14px;
+  width: 92%;
+  line-height: 1.35;
+  box-sizing: border-box;
+}
+
+/* Customer Incoming Bubble */
+.sama-bubble.bubble-customer {
+  align-self: flex-start;
+  background: #EEF3F8;
+  color: #0B1E42;
+}
+
+.sama-bubble.bubble-customer .bubble-primary {
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: #0B1E42;
+  line-height: 1.45;
+}
+
+.sama-bubble.bubble-customer .bubble-timestamp {
+  font-size: 0.72rem;
+  color: #8E9FAA;
+  margin-top: 6px;
+}
+
+/* AI Assistant Outgoing Bubble */
+.sama-bubble.bubble-ai {
+  align-self: flex-start;
+  background: #1878DE;
+  color: #FFFFFF;
+}
+
+.sama-bubble.bubble-ai .bubble-primary {
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.45;
+}
+
+.sama-bubble.bubble-ai .bubble-timestamp {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 6px;
+}
+
+/* Booking Confirmed Pill */
+.sama-booking-confirmed {
+  background: #EBF8F2;
+  border: 1.5px solid #149A6A;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #149A6A;
+  font-weight: 700;
+  font-size: 0.86rem;
+  margin-top: 2px;
+  width: 92%;
+  box-sizing: border-box;
+}
+
+/* Right Side: What Your Business Sees */
+.sama-business-feed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 6px;
+}
+
+.business-feed-heading {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #536580;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+
+.business-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.business-feed-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.82rem;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: var(--transition-fast);
+  gap: 14px;
 }
 
-.hud-step-item.active {
-  background: rgba(24, 120, 222, 0.2);
-  border-color: var(--color-sky);
-}
-
-.hud-step-icon {
-  width: 20px;
-  height: 20px;
+.feed-indicator {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: rgba(69, 194, 251, 0.2);
-  color: var(--color-sky);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.72rem;
-  font-weight: 700;
+  margin-top: 5px;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
-.hud-step-item.completed .hud-step-icon {
-  background: var(--color-confirm-green);
-  color: #FFFFFF;
+.feed-indicator.dot-sky {
+  background: #38B6FF;
+  box-shadow: 0 0 0 3px rgba(56, 182, 255, 0.2);
 }
 
-.hud-step-content {
-  flex: 1;
+.feed-indicator.dot-green {
+  background: #149A6A;
+  box-shadow: 0 0 0 3px rgba(20, 154, 106, 0.2);
 }
 
-.hud-step-name {
-  font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1.2;
+.feed-indicator.dot-slate {
+  background: #B0BCCB;
 }
 
-.hud-step-desc {
-  font-size: 0.74rem;
-  color: var(--color-text-light);
-  margin-top: 2px;
-}
-
-.hud-footer {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.feed-text-block {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.75rem;
-  color: var(--color-text-light);
+  flex-direction: column;
 }
 
-.hud-live-tag {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--color-confirm-green);
+.feed-step-title {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
   font-weight: 700;
+  color: #0B1E42;
+  line-height: 1.25;
 }
 
-.hud-live-tag .pulse {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-confirm-green);
-  box-shadow: 0 0 0 2px rgba(20, 154, 106, 0.4);
-  animation: pulseGreen 1.5s infinite;
+.feed-step-desc {
+  font-size: 0.84rem;
+  color: #62748C;
+  margin-top: 3px;
+  line-height: 1.4;
 }
 
 /* --------------------------------------------------------------------------
@@ -612,120 +517,178 @@
 }
 
 /* --------------------------------------------------------------------------
-   SERVICES SECTION (5 DETAILED PILLARS)
+   SERVICES SECTION (5 FULL-WIDTH ROWS)
+   Exact match to brand design screenshots
    -------------------------------------------------------------------------- */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
+.services-full-section {
+  width: 100%;
+  position: relative;
+  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
-.service-card {
+.services-header-wrap {
+  padding-top: clamp(64px, 8vw, 96px);
+  padding-bottom: 52px;
   background: #FFFFFF;
-  border: 1px solid var(--color-border-card);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: var(--shadow-sm);
+}
+
+.service-row {
+  width: 100%;
+  padding-block: clamp(52px, 6vw, 76px);
+  position: relative;
+  border-top: 1px solid rgba(226, 237, 248, 0.75);
+}
+
+.service-row.bg-tint {
+  background: #F4F8FC;
+}
+
+.service-row.bg-white {
+  background: #FFFFFF;
+}
+
+.service-row-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(36px, 5vw, 68px);
+  align-items: start;
+}
+
+.service-lead-col {
   display: flex;
   flex-direction: column;
-  transition: var(--transition-base);
-  position: relative;
 }
 
-.service-card:hover {
-  border-color: var(--color-signal-blue);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-}
-
-.service-card.col-7 {
-  grid-column: span 7;
-}
-
-.service-card.col-5 {
-  grid-column: span 5;
-}
-
-.service-card.col-4 {
-  grid-column: span 4;
-}
-
-.service-card.col-6 {
-  grid-column: span 6;
-}
-
-.service-num {
+.service-badge-num {
+  color: #1878DE;
   font-family: var(--font-heading);
-  font-size: 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: inline-block;
+  letter-spacing: -0.01em;
+}
+
+.service-lead-title {
+  color: #0B1E42;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
   font-weight: 800;
-  color: var(--color-signal-blue);
-  background: var(--color-ice);
-  width: fit-content;
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   margin-bottom: 16px;
 }
 
-.service-title {
-  font-size: 1.45rem;
-  margin-bottom: 10px;
-  color: var(--color-midnight);
+.service-lead-desc {
+  color: #536580;
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 
-.service-desc {
-  font-size: 0.96rem;
-  margin-bottom: 24px;
+.service-features-col {
+  width: 100%;
+}
+
+.service-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 44px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-title {
+  color: #0B1E42;
+  font-family: var(--font-heading);
+  font-size: 1.06rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  letter-spacing: -0.015em;
+}
+
+.feature-desc {
+  color: #536580;
+  font-size: 0.9rem;
   line-height: 1.55;
 }
 
-.service-items-grid {
+/* Service 03 Channels Chips */
+.channels-wrap {
+  margin-bottom: 16px;
+}
+
+.channels-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748B;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.channels-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.channel-chip {
+  background: #E8F2FC;
+  color: #1878DE;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Service 04 Checklist */
+.service-checklist-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 40px;
 }
 
-.service-item-box {
-  background: var(--color-paper);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
-  padding: 14px;
-}
-
-.service-item-heading {
-  font-family: var(--font-heading);
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--color-midnight);
-  margin-bottom: 4px;
-}
-
-.service-item-text {
-  font-size: 0.82rem;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
-
-/* Checklist items for IT support */
-.checklist-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.service-check-item {
+  display: flex;
+  align-items: flex-start;
   gap: 12px;
 }
 
-.checklist-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.86rem;
-  color: var(--color-midnight);
-  font-weight: 500;
-}
-
-.checklist-item svg {
-  color: var(--color-confirm-green);
+.check-svg {
   flex-shrink: 0;
   margin-top: 3px;
+}
+
+.check-label {
+  color: #0B1E42;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* Responsive Overrides for Services Rows */
+@media (max-width: 992px) {
+  .service-row-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .service-lead-col {
+    max-width: 580px;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-features-grid,
+  .service-checklist-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1294,10 +1257,15 @@
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
+    gap: 48px;
   }
   
-  .demo-stage-body {
+  .sama-hero-showcase {
     grid-template-columns: 1fr;
+    justify-items: center;
+    max-width: 480px;
+    margin-inline: auto;
+    gap: 36px;
   }
 
   .problem-grid,
@@ -1311,9 +1279,6 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .services-grid .service-card {
-    grid-column: span 12 !important;
-  }
 
   .security-inner-grid {
     grid-template-columns: 1fr;
@@ -1344,6 +1309,17 @@
 
   .form-group.col-span-2 {
     grid-column: span 1;
+  }
+
+  .sama-phone-device {
+    max-width: 100%;
+    border-radius: 22px;
+  }
+
+  .sama-bubble,
+  .sama-booking-confirmed {
+    width: 100%;
+    max-width: 100%;
   }
 
   .a2z-spine-container {

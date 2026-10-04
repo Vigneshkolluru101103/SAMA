@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
+  initSmoothScrollNav();   // <-- locked nav smooth-scroll, does NOT touch DOM order
   initMobileNav();
   initIndustryTabs();
   initTimelineInteractions();
@@ -11,6 +12,47 @@ document.addEventListener('DOMContentLoaded', () => {
   initModalAndForms();
   initScrollAnimations();
 });
+
+/* --------------------------------------------------------------------------
+   Smooth-Scroll Navigation — LOCKED BEHAVIOUR
+   Rules: Only scrolls to the target section. Never reorders anything.
+   Never sorts, filters, moves, or re-renders sections or nav items.
+   -------------------------------------------------------------------------- */
+function initSmoothScrollNav() {
+  // Select ONLY internal same-page anchor links (href starting with #)
+  const navAnchors = document.querySelectorAll('a[href^="#"]');
+
+  navAnchors.forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+
+      // Safety: ignore empty hashes or non-section links
+      if (!href || href === '#') return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      // Prevent the browser's default instant jump
+      e.preventDefault();
+
+      // Calculate the header height so the section isn't hidden behind it
+      const header = document.querySelector('.site-header');
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      // Get the section's distance from the very top of the document
+      const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
+
+      // Scroll — no DOM changes, just viewport movement
+      window.scrollTo({
+        top: targetTop,
+        behavior: 'smooth'
+      });
+
+      // Update the URL hash silently (no page jump)
+      history.pushState(null, '', href);
+    });
+  });
+}
 
 /* --------------------------------------------------------------------------
    Sticky Header & Scroll State
