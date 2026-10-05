@@ -201,7 +201,7 @@ const INDUSTRY_DATA = {
       { step: "Counselling", desc: "Demo class or parent counselling slot" },
       { step: "Nurturing", desc: "Follow-up sequence until enrollment" }
     ],
-    detail: "Speed matters during admission cycles. SAMA A2Z answers queries regarding syllabus, eligibility, and timings in Telugu, Hindi, or English, and schedules parent counseling sessions."
+    detail: "Speed matters during admission cycles. SAMA A2Z answers queries regarding syllabus, eligibility, and timings across all customer languages, and schedules parent counseling sessions."
   },
   retail: {
     title: "Retail & Local Services",
@@ -353,7 +353,7 @@ function initModalAndForms() {
       const businessType = demoForm.businessType ? demoForm.businessType.value : 'Small Business';
       const city = demoForm.city ? demoForm.city.value.trim() : 'Hyderabad';
       const phone = demoForm.whatsapp ? demoForm.whatsapp.value.trim() : '';
-      const language = demoForm.preferredLang ? demoForm.preferredLang.value : 'Telugu';
+      const language = demoForm.preferredLang ? demoForm.preferredLang.value : 'Multilingual';
 
       // WhatsApp formatted message
       const messageText = `Hi SAMA A2Z Team! I would like to book a 20-minute demo for my business.\n\n*Name:* ${name}\n*Business:* ${business}\n*Type:* ${businessType}\n*City:* ${city}\n*Preferred Language:* ${language}\n*WhatsApp:* ${phone}`;
@@ -389,7 +389,7 @@ function initModalAndForms() {
   directWhatsAppBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const defaultText = "Hi SAMA A2Z Team! I saw your website and would like to ask a question in Telugu/Hindi/English.";
+      const defaultText = "Hi SAMA A2Z Team! I saw your website and would like to ask a question.";
       window.open(`https://wa.me/?text=${encodeURIComponent(defaultText)}`, '_blank');
     });
   });
@@ -581,40 +581,5 @@ function initServicesStorytelling() {
   });
 
   chapters.forEach(ch => chapterObserver.observe(ch));
-
-  // Language Switcher Demo in AI Agents Mockup
-  const langTags = document.querySelectorAll('.ai-lang-switch .lang-tag');
-  const customerBubble = document.querySelector('.ai-chat-thread .chat-bubble.customer');
-  const assistantBubble = document.querySelector('.ai-chat-thread .chat-bubble.assistant');
-
-  if (langTags.length > 0 && customerBubble && assistantBubble) {
-    const chatSamples = {
-      'Telugu': {
-        user: 'నమస్కారం! మీ డిజైన్ ప్యాకేజీలు మరియు కన్సల్టేషన్ వివరాలు ఏమిటి? శనివారం స్లాట్ దొరుకుతుందా?',
-        agent: 'నమస్కారం! మా ఆర్కిటెక్చర్ & ఇంటీరియర్ కన్సల్టేషన్ శనివారం ఉదయం 11:30 కు ఖాళీగా ఉంది. మీ బడ్జెట్ మరియు రిక్వైర్మెంట్ చెప్పండి, సీనియర్ ఆర్కిటెక్ట్‌తో స్లాట్ కన్ఫర్మ్ చేస్తాను.'
-      },
-      'Hindi': {
-        user: 'नमस्ते! क्या मुझे इंटीरियर डिजाइन पैकेजेस और शनिवार की अपॉइंटमेंट की जानकारी मिल सकती है?',
-        agent: 'नमस्ते! शनिवार सुबह 11:30 बजे हमारे सीनियर कंसल्टेंट का स्लॉट उपलब्ध है। क्या मैं आपके लिए यह अपॉइंटमेंट बुक कर दूं?'
-      },
-      'English': {
-        user: 'Hello! Could you share your interior design packages and confirm if you have a consultation slot this Saturday?',
-        agent: 'Hello! We have open consultation slots this Saturday at 11:30 AM and 3:00 PM. Would you like me to reserve the 11:30 AM slot for you?'
-      }
-    };
-
-    langTags.forEach(tag => {
-      tag.style.cursor = 'pointer';
-      tag.addEventListener('click', () => {
-        langTags.forEach(t => t.classList.remove('active'));
-        tag.classList.add('active');
-        const lang = tag.textContent.trim();
-        if (chatSamples[lang]) {
-          customerBubble.textContent = chatSamples[lang].user;
-          assistantBubble.textContent = chatSamples[lang].agent;
-        }
-      });
-    });
-  }
 }
 

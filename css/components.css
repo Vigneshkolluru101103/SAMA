@@ -752,7 +752,7 @@
   border-bottom: 1px solid rgba(11, 30, 66, 0.06);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 16px;
 }
 
 .mockup-controls {
@@ -1137,7 +1137,7 @@
 
 .editorial-row-main {
   flex: 1;
-  padding-right: 20px;
+  padding-right: 0;
   transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
@@ -1172,23 +1172,7 @@
 }
 
 .editorial-row-arrow {
-  color: #1878DE;
-  font-size: 1.45rem;
-  font-weight: 400;
-  line-height: 1;
-  flex-shrink: 0;
-  opacity: 0.8;
-  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-              color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  transform: translateX(0);
-  will-change: transform;
-}
-
-.editorial-row:hover .editorial-row-arrow {
-  transform: translateX(5px);
-  color: #0B1E42;
-  opacity: 1;
+  display: none !important;
 }
 
 /* Responsive Overrides for Editorial Storytelling */
