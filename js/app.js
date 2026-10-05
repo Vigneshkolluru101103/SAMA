@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initSecurityChecklist();
   initModalAndForms();
   initScrollAnimations();
+  initServicesStorytelling();
+  initScrollLinkedMotion();
+  initDesktopPointerInteractions();
 });
 
 /* --------------------------------------------------------------------------
@@ -61,11 +64,18 @@ function initStickyHeader() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
+  let isTicking = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 20) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        isTicking = false;
+      });
+      isTicking = true;
     }
   }, { passive: true });
 }
@@ -338,29 +348,219 @@ function initModalAndForms() {
 }
 
 /* --------------------------------------------------------------------------
-   Scroll Animations Observer
+   Scroll Animations Observer — Apple-Style Smooth Deceleration & Stagger
    -------------------------------------------------------------------------- */
 function initScrollAnimations() {
-  const cards = document.querySelectorAll('.card-glass, .problem-card, .service-card, .a2z-stage-card, .hold-card');
-  if (!('IntersectionObserver' in window)) return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Target key sections, cards, and editorial content
+  const elementsToReveal = document.querySelectorAll(
+    '.section-header, .card-glass, .problem-card, .service-card, .a2z-stage-card, .hold-card, .trust-item, .editorial-row, .timeline-step-item, .comparison-card, .industry-flow-box'
+  );
+
+  if (elementsToReveal.length === 0) return;
+
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    elementsToReveal.forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    return;
+  }
+
+  // Setup initial hidden state
+  elementsToReveal.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)';
+    el.style.willChange = 'opacity, transform';
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
+        const el = entry.target;
+        // Compute subtle stagger if child has sibling index (40-60ms)
+        const parent = el.parentElement;
+        let staggerDelay = 0;
+        if (parent) {
+          const siblings = Array.from(parent.children).filter(c => 
+            c.matches('.section-header, .card-glass, .problem-card, .service-card, .a2z-stage-card, .hold-card, .trust-item, .editorial-row, .timeline-step-item, .comparison-card, .industry-flow-box')
+          );
+          const idx = siblings.indexOf(el);
+          if (idx > 0) {
+            staggerDelay = Math.min(idx * 50, 300); // 50ms stagger, max 300ms
+          }
+        }
+
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, staggerDelay);
+
+        observer.unobserve(el);
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
   });
 
-  cards.forEach(card => {
-    card.style.opacity = '0.92';
-    card.style.transform = 'translateY(10px)';
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.25s ease, box-shadow 0.25s ease';
-    observer.observe(card);
+  elementsToReveal.forEach(el => observer.observe(el));
+}
+
+/* --------------------------------------------------------------------------
+   Scroll-Linked Motion & Subtle Parallax (RAF-throttled, GPU accelerated)
+   -------------------------------------------------------------------------- */
+function initScrollLinkedMotion() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.innerWidth < 768) return; // Native clean scroll on mobile
+
+  const blob1 = document.querySelector('.hero-glow-blob');
+  const blob2 = document.querySelector('.hero-glow-blob-2');
+  const heroMockup = document.querySelector('.sama-phone-device');
+
+  let latestScrollY = window.pageYOffset;
+  let isTicking = false;
+
+  function updateMotion() {
+    latestScrollY = window.pageYOffset;
+
+    // Micro-parallax: background layers move at subtle 0.04x - 0.05x
+    if (blob1 && latestScrollY < 1200) {
+      blob1.style.transform = `translate3d(0, ${(latestScrollY * 0.05).toFixed(1)}px, 0)`;
+    }
+    if (blob2 && latestScrollY < 1200) {
+      blob2.style.transform = `translate3d(0, ${(latestScrollY * -0.04).toFixed(1)}px, 0)`;
+    }
+
+    // Subtle gentle depth on hero product visual
+    if (heroMockup && latestScrollY < 900) {
+      const shiftY = Math.min(16, latestScrollY * 0.035).toFixed(1);
+      heroMockup.style.transform = `translate3d(0, ${shiftY}px, 0)`;
+    }
+
+    isTicking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(updateMotion);
+      isTicking = true;
+    }
+  }, { passive: true });
+}
+
+/* --------------------------------------------------------------------------
+   Desktop Pointer / Micro-depth Tilt (Desktop Only, Subtle & Gentle)
+   -------------------------------------------------------------------------- */
+function initDesktopPointerInteractions() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const visualFrames = document.querySelectorAll('.editorial-visual-frame');
+  visualFrames.forEach(frame => {
+    let bounds;
+    function updateBounds() {
+      bounds = frame.getBoundingClientRect();
+    }
+
+    frame.addEventListener('mouseenter', () => {
+      updateBounds();
+      frame.style.transition = 'transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1)';
+    });
+
+    frame.addEventListener('mousemove', (e) => {
+      if (!bounds) updateBounds();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+      const xPct = (mouseX / bounds.width - 0.5) * 2;
+      const yPct = (mouseY / bounds.height - 0.5) * 2;
+
+      // Extremely subtle tilt: max 1.2 degrees, no jarring rotation
+      frame.style.transform = `perspective(1000px) rotateY(${(xPct * 1.2).toFixed(2)}deg) rotateX(${(-yPct * 1.2).toFixed(2)}deg) translateY(-2px)`;
+    });
+
+    frame.addEventListener('mouseleave', () => {
+      frame.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+      frame.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)';
+    });
   });
 }
+
+/* --------------------------------------------------------------------------
+   Services Editorial Storytelling Chapter Spy & Sticky Visual Transitions
+   -------------------------------------------------------------------------- */
+function initServicesStorytelling() {
+  const chapters = document.querySelectorAll('.editorial-chapter');
+  const trackerItems = document.querySelectorAll('.services-nav-item');
+  if (chapters.length === 0 || trackerItems.length === 0) return;
+
+  // Active Chapter Scroll Spy with Overlapping Visual Crossfade
+  const chapterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const chapterId = entry.target.getAttribute('id');
+        const chapterIndex = parseInt(entry.target.getAttribute('data-chapter-index') || '1', 10);
+
+        trackerItems.forEach(item => {
+          const itemHref = item.getAttribute('href').replace('#', '');
+          item.classList.toggle('active', itemHref === chapterId);
+        });
+
+        // Update active, past, and upcoming state for sticky visual transition
+        chapters.forEach(ch => {
+          const idx = parseInt(ch.getAttribute('data-chapter-index') || '1', 10);
+          ch.classList.remove('is-active', 'is-past', 'is-upcoming');
+          if (idx === chapterIndex) {
+            ch.classList.add('is-active');
+          } else if (idx < chapterIndex) {
+            ch.classList.add('is-past');
+          } else {
+            ch.classList.add('is-upcoming');
+          }
+        });
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '-12% 0px -45% 0px'
+  });
+
+  chapters.forEach(ch => chapterObserver.observe(ch));
+
+  // Language Switcher Demo in AI Agents Mockup
+  const langTags = document.querySelectorAll('.ai-lang-switch .lang-tag');
+  const customerBubble = document.querySelector('.ai-chat-thread .chat-bubble.customer');
+  const assistantBubble = document.querySelector('.ai-chat-thread .chat-bubble.assistant');
+
+  if (langTags.length > 0 && customerBubble && assistantBubble) {
+    const chatSamples = {
+      'Telugu': {
+        user: 'నమస్కారం! మీ డిజైన్ ప్యాకేజీలు మరియు కన్సల్టేషన్ వివరాలు ఏమిటి? శనివారం స్లాట్ దొరుకుతుందా?',
+        agent: 'నమస్కారం! మా ఆర్కిటెక్చర్ & ఇంటీరియర్ కన్సల్టేషన్ శనివారం ఉదయం 11:30 కు ఖాళీగా ఉంది. మీ బడ్జెట్ మరియు రిక్వైర్మెంట్ చెప్పండి, సీనియర్ ఆర్కిటెక్ట్‌తో స్లాట్ కన్ఫర్మ్ చేస్తాను.'
+      },
+      'Hindi': {
+        user: 'नमस्ते! क्या मुझे इंटीरियर डिजाइन पैकेजेस और शनिवार की अपॉइंटमेंट की जानकारी मिल सकती है?',
+        agent: 'नमस्ते! शनिवार सुबह 11:30 बजे हमारे सीनियर कंसल्टेंट का स्लॉट उपलब्ध है। क्या मैं आपके लिए यह अपॉइंटमेंट बुक कर दूं?'
+      },
+      'English': {
+        user: 'Hello! Could you share your interior design packages and confirm if you have a consultation slot this Saturday?',
+        agent: 'Hello! We have open consultation slots this Saturday at 11:30 AM and 3:00 PM. Would you like me to reserve the 11:30 AM slot for you?'
+      }
+    };
+
+    langTags.forEach(tag => {
+      tag.style.cursor = 'pointer';
+      tag.addEventListener('click', () => {
+        langTags.forEach(t => t.classList.remove('active'));
+        tag.classList.add('active');
+        const lang = tag.textContent.trim();
+        if (chatSamples[lang]) {
+          customerBubble.textContent = chatSamples[lang].user;
+          assistantBubble.textContent = chatSamples[lang].agent;
+        }
+      });
+    });
+  }
+}
+

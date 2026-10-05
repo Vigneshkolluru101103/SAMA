@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZapDocs — Digital Rental Agreement, eStamp & Dual eSign</title>
+  <meta name="description" content="Legally binding digital rental agreements in minutes. Automated state eStamp, Aadhaar eSign, guest tenant signing, and instant verification in one seamless workflow.">
+  
+  <!-- Modern Clean Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- ZapDocs Stylesheet -->
+  <link rel="stylesheet" href="css/zapdocs.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       10. NAVBAR — Frosted Glass Apple-like Sticky Header
+       ========================================================================= -->
+  <header class="zap-navbar">
+    <div class="zap-container">
+      <div class="nav-inner">
+        <!-- Brand Logo -->
+        <a href="#hero" class="zap-brand" aria-label="ZapDocs Home">
+          <div class="zap-brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <span>Zap</span>Docs
+        </a>
+
+        <!-- Navigation Links -->
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links">
+            <li><a href="#workflow">Workflow</a></li>
+            <li><a href="#document-engine">Document Engine</a></li>
+            <li><a href="#pricing-calculator">Pricing & Stamp Duty</a></li>
+            <li><a href="#dual-esign">Dual eSign</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Actions -->
+        <div class="nav-actions">
+          <a href="#pricing-calculator" class="zap-btn zap-btn-ghost">Calculate Fees</a>
+          <a href="#workflow" class="zap-btn zap-btn-primary">Create Agreement</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         3. HERO SECTION — Cinematic Depth, Subtle Parallax, Scale on Scroll
+         ========================================================================= -->
+    <section class="zap-hero" id="hero">
+      <div class="hero-glow-1"></div>
+
+      <div class="zap-container">
+        <div class="hero-content">
+          <!-- Animated Eyebrow Badge -->
+          <div class="zap-badge reveal-item">
+            <span class="zap-badge-pulse"></span>
+            Legally Valid Across 28 States & UTs
+          </div>
+
+          <!-- Hero Headline -->
+          <h1 class="hero-headline reveal-item reveal-delay-1">
+            Rental agreements, stamped & signed.<br>
+            <span class="text-gradient">In under 10 minutes.</span>
+          </h1>
+
+          <!-- Supporting Text -->
+          <p class="hero-subtext reveal-item reveal-delay-2">
+            Replace court queues and notary visits. ZapDocs verifies property jurisdiction, attaches certified government eStamp, and handles dual-party Aadhaar eSign in one frictionless flow.
+          </p>
+
+          <!-- Primary CTA Group -->
+          <div class="hero-cta-group reveal-item reveal-delay-3">
+            <a href="#workflow" class="zap-btn zap-btn-primary zap-btn-lg">
+              Draft Agreement Now
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#document-engine" class="zap-btn zap-btn-secondary zap-btn-lg">
+              Explore Live Preview
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="hero-meta-proof reveal-item reveal-delay-4">
+            <div class="proof-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Indian Stamp Act 1899 Compliant</span>
+            </div>
+            <div class="proof-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Information Technology Act (IT Act 2000)</span>
+            </div>
+            <div class="proof-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Guest Signing for Tenants (No Signup)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Visual Deck (Scales and translates smoothly on scroll) -->
+        <div class="hero-visual-container reveal-scale reveal-delay-2">
+          <div class="hero-mockup-frame">
+            <!-- Window Bar -->
+            <div class="mockup-header-bar">
+              <div class="mockup-dots">
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+              </div>
+              <div class="mockup-url-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                app.zapdocs.com/agreements/AGR-2026-8894
+              </div>
+              <span class="mockup-badge-live">Live Active Session</span>
+            </div>
+
+            <!-- Inside UI Mockup -->
+            <div class="hero-app-view">
+              <!-- Left Mini Steps -->
+              <div class="app-sidebar-card">
+                <div class="app-sidebar-header">Progress Checklist</div>
+                <ul class="app-steps-list">
+                  <li class="app-step-mini completed">
+                    <span class="app-step-icon">✓</span> 01 Parties & Rent
+                  </li>
+                  <li class="app-step-mini completed">
+                    <span class="app-step-icon">✓</span> 02 Jurisdiction & Stamp
+                  </li>
+                  <li class="app-step-mini active">
+                    <span class="app-step-icon">●</span> 03 Dual Signatures
+                  </li>
+                  <li class="app-step-mini">
+                    <span class="app-step-icon">○</span> 04 Audit Certificate
+                  </li>
+                </ul>
+                <div style="margin-top:auto; font-size:0.78rem; color:var(--zap-text-muted); background:var(--zap-bg-alt); padding:10px; border-radius:6px;">
+                  🔒 256-Bit SHA Encrypted Document Hash
+                </div>
+              </div>
+
+              <!-- Center Agreement Preview -->
+              <div class="app-center-doc">
+                <div class="doc-watermark">ZAPDOCS VERIFIED</div>
+                <div class="doc-header-row">
+                  <div>
+                    <span class="doc-type-badge">RESIDENTIAL LEASE</span>
+                    <div style="font-weight:700; font-size:0.95rem; margin-top:4px;">11-Month Rental Agreement</div>
+                  </div>
+                  <div class="doc-code">REF: BLR/2026/9821</div>
+                </div>
+
+                <div class="doc-lines">
+                  <div style="font-size:0.82rem; color:var(--zap-dark); font-weight:600;">Premises: Flat 402, Oakridge Heights, Indiranagar, Bengaluru</div>
+                  <div class="doc-line-skeleton" style="width: 95%;"></div>
+                  <div class="doc-line-skeleton" style="width: 88%;"></div>
+                  <div class="doc-line-skeleton" style="width: 76%;"></div>
+                </div>
+
+                <div class="doc-clause-box">
+                  <h4>Clause 4: Rent & Security Deposit</h4>
+                  <p>Monthly Rent of ₹38,000 paid by 5th of every English calendar month. Security Deposit ₹1,50,000 held by Lessor.</p>
+                </div>
+
+                <!-- Signatures -->
+                <div class="doc-signatures-box">
+                  <div class="sig-slot signed">
+                    <div class="sig-label">Lessor (Owner)</div>
+                    <div class="sig-ink">Aditya K. Sharma</div>
+                    <div class="sig-name">Aadhaar eSigned (OTP)</div>
+                  </div>
+                  <div class="sig-slot signed">
+                    <div class="sig-label">Lessee (Tenant)</div>
+                    <div class="sig-ink">Sneha Rao</div>
+                    <div class="sig-name">Guest eSign Verified</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Status Card -->
+              <div class="app-right-status">
+                <div class="status-card-live">
+                  <div class="status-indicator-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Official eStamp Attached
+                  </div>
+                  <h5>SHCIL / Treasury GRN</h5>
+                  <p>Non-Judicial e-Stamp certificate generated with tamper-proof QR code.</p>
+                  <div class="stamp-duty-pill">
+                    <span>Duty Value:</span>
+                    <strong>₹500.00 Paid</strong>
+                  </div>
+                </div>
+
+                <div class="status-card-live" style="border-left: 3px solid var(--zap-primary);">
+                  <h5>Next Action</h5>
+                  <p>Both signers finished. Agreement download link dispatched to WhatsApp & Email.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         TRUST & LEGAL METRICS STRIP
+         ========================================================================= -->
+    <section class="zap-trust-strip">
+      <div class="zap-container">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <h4>100%</h4>
+            <p>Court Admissible Evidence</p>
+          </div>
+          <div class="trust-item">
+            <h4>&lt; 10 Mins</h4>
+            <p>Average Complete Turnaround</p>
+          </div>
+          <div class="trust-item">
+            <h4>28 States</h4>
+            <p>Direct Treasury eStamp Integration</p>
+          </div>
+          <div class="trust-item">
+            <h4>Zero App</h4>
+            <p>Tenant signs directly in browser</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4 & 5. PRODUCT STORYTELLING — STICKY SCROLL 8-STEP EXPERIENCE
+         Apple-inspired: Left preview sticks and mutates, Right steps scroll
+         ========================================================================= -->
+    <section class="zap-story-section" id="workflow">
+      <div class="zap-container">
+        <div class="story-header reveal-item">
+          <div class="zap-badge">Cinematic Journey</div>
+          <h2>From rental details to completed agreement in eight effortless steps.</h2>
+          <p>
+            No lawyer visits, no paper stamps, no chasing signatures. Watch how each stage connects seamlessly into an enforceable legal instrument.
+          </p>
+        </div>
+
+        <div class="sticky-split-container">
+          <!-- LEFT STICKY PREVIEW PANE -->
+          <div class="sticky-left-col">
+            <div class="sticky-preview-window">
+              <div class="sticky-window-header">
+                <div class="sticky-step-indicator">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                  <span id="stickyCurrentStep">Stage 01 of 08</span>
+                </div>
+                <div class="sticky-progress-dots">
+                  <span class="progress-dot active"></span>
+                  <span class="progress-dot"></span>
+                  <span class="progress-dot"></span>
+                  <span class="progress-dot"></span>
+                  <span class="progress-dot"></span>
+                  <span class="progress-dot"></span>
+                  <span class="progress-dot"></span>
+                  <span class="progress-dot"></span>
+                </div>
+              </div>
+
+              <!-- Stage 01 Preview Screen -->
+              <div class="sticky-stage-screen active" data-stage="0">
+                <h4 style="font-size:1.15rem; margin-bottom:12px; color:var(--zap-dark);">📝 01 — Agreement Creation</h4>
+                <p style="font-size:0.9rem; color:var(--zap-text-muted); margin-bottom:20px;">
+                  Smart template tailored for residential or commercial tenancies with built-in clauses for lock-in, escalation, and maintenance.
+                </p>
+                <div style="background:var(--zap-bg-alt); padding:16px; border-radius:12px; border:1px solid var(--zap-border); font-size:0.86rem; display:flex; flex-direction:column; gap:8px;">
+                  <div style="display:flex; justify-content:space-between;"><span>Agreement Type:</span> <strong>11-Month Residential</strong></div>
+                  <div style="display:flex; justify-content:space-between;"><span>Custom Clauses:</span> <strong>Pet Policy, Notice Period</strong></div>
+                  <div style="display:flex; justify-content:space-between;"><span>Lock-in Duration:</span> <strong>6 Months</strong></div>
+                </div>
+              </div>
+
+              <!-- Stage 02 Preview Screen -->
+              <div class="sticky-stage-screen" data-stage="1">
+                <h4 style="font-size:1.15rem; margin-bottom:12px; color:var(--zap-dark);">📍 02 — Jurisdiction & Rules</h4>
+                <p style="font-size:0.9rem; color:var(--zap-text-muted); margin-bottom:20px;">
+                  Automated PIN-code jurisdiction engine detects applicable state tenancy laws, registration rules, and local stamp duty bands.
+                </p>
+                <div style="background:#EFF6FF; border:1px solid #BFDBFE; padding:16px; border-radius:12px; font-size:0.86rem;">
+                  <div style="font-weight:700; color:var(--zap-primary); margin-bottom:6px;">✓ Verified Jurisdiction: Karnataka</div>
+                  <p style="color:#1E40AF; font-size:0.8rem;">Applicable Act: Karnataka Rent Act & Stamp Act 1957. Standard non-judicial stamp duty applied.</p>
+                </div>
+              </div>
+
+              <!-- Stage 03 Preview Screen -->
+              <div class="sticky-stage-screen" data-stage="2">
+                <h4 style="font-size:1.15rem; margin-bottom:12px; color:var(--zap-dark);">🔍 03 — Review & Transparent Pricing</h4>
+                <p style="font-size:0.9rem; color:var(--zap-text-muted); margin-bottom:20px;">
+                  Side-by-side legal proofing and clear cost calculation with zero hidden brokerage or filing markups.
+                </p>
+                <div style="background:var(--zap-bg-alt); padding:16px; border-radius:12px; border:1px solid var(--zap-border); font-size:0.86rem;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>Government eStamp Duty:</span> <strong>₹500</strong></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>Aadhaar eSign Gateway:</span> <strong>Included</strong></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>ZapDocs Platform Fee:</span> <strong>₹499</strong></div>
+                  <div style="border-top:1px solid var(--zap-border); padding-top:8px; display:flex; justify-content:space-between; font-weight:700; color:var(--zap-primary);"><span>Total:</span> <strong>₹999</strong></div>
+                </div>
+              </div>
+
+              <!-- Stage 04 Preview Screen -->
+              <div class="sticky-stage-screen" data-stage="3">
+                <h4 style="font-size:1.15rem; margin-bottom:12px; color:var(--zap-dark);">💳 04 — Instant UPI / Card Checkout</h4>
+                <p style="font-size:0.9rem; color:var(--zap-text-muted); margin-bottom:20px;">
+                  Pay in 5 seconds via UPI QR, Net Banking, or Credit Card. Webhook immediately initiates treasury stamp allotment.
+                </p>
+                <div style="text-align:center; padding:20px; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px;">
+                  <div style="width:36px; height:36px; border-radius:50%; background:#22C55E; color:#FFFFFF; display:inline-flex; align-items:center; justify-content:center; margin-bottom:8px;">✓</div>
+                  <div style="font-weight:700; color:#15803D;">Payment Authorized</div>
+                  <div style="font-size:0.8rem; color:#166534;">TXN ID: ZAP-PAY-882103 • ₹999.00</div>
+                </div>
+              </div>
+
+              <!-- Stage 05 Preview Screen -->
+              <div class="sticky-stage-screen" data-stage="4">
+                <h4 style="font-size:1.15rem; margin-bottom:12px; color:var(--zap-dark);">🏛️ 05 — Official eStamp Allotment</h4>
+                <p style="font-size:0.9rem; color:var(--zap-text-muted); margin-bottom:20px;">
+                  Real-time issuance through government-authorized stamping agencies (SHCIL/Treasury). Secure GRN and QR verification code stamped.
+                </p>
+                <div style="border:2px dashed #B45309; background:#FFFBEB; padding:16px; border-radius:12px; font-size:0.82rem; text-align:center;">
+                  <div style="font-weight:800; color:#92400E; text-transform:uppercase;">e-Stamp Certificate of Karnataka</div>
+                  <div style="font-family:var(--font-mono); color:#B45309; margin-top:4px;">IN-KA4982104928198P</div>
+                  <div style="margin-top:6px; font-size:0.78rem; color:#78350F;">Purchased by: Lessor & Lessee for Rental Agreement</div>
+                </div>
+              </div>
+
+              <!-- Stage 06 Preview Screen -->
+              <div class="sticky-stage-screen" data-stage="5">
+                <h4 style="font-size:1.15rem; margin-bottom:12px; color:var(--zap-dark);">✍️ 06 — First Signer: Owner eSign</h4>
+                <p style="font-size:0.9rem; color:var(--zap-text-muted); margin-bottom:20px;">
+                  Owner signs in 30 seconds using UIDAI Aadhaar OTP or Digital Signature Certificate.
+                </p>
+                <div style="background:var(--zap-bg-alt); padding:16px; border-radius:12px; border:1px solid var(--zap-border);">
+                  <div style="font-size:0.82rem; color:var(--zap-success); font-weight:600; margin-bottom:6px;">✓ UIDAI Response: Authentication Success</div>
+                  <div style="font-family:'Brush Script MT', cursive; font-size:1.8rem; color:var(--zap-primary);">Aditya K. Sharma</div>
+                  <div style="font-size:0.75rem; color:var(--zap-text-light);">Cryptographically bound to hash: e3b0c44298fc1c149afb...</div>
+                </div>
+              </div>
+
+              <!-- Stage 07 Preview Screen -->
+              <div class="sticky-stage-screen" data-stage="6">
+                <h4 style="font-size:1.15rem; margin-bottom:12px; color:var(--zap-dark);">📲 07 — Second Signer: Guest Tenant Flow</h4>
+                <p style="font-size:0.9rem; color:var(--zap-text-muted); margin-bottom:20px;">
+                  Tenant receives a secure magic link on WhatsApp & SMS. No app download or account creation required.
+                </p>
+                <div style="background:#FAF5FF; border:1px solid #E9D5FF; padding:16px; border-radius:12px; font-size:0.84rem;">
+                  <div style="font-weight:700; color:#7E22CE; margin-bottom:4px;">Guest Signer Session Active</div>
+                  <p style="color:#6B21A8; font-size:0.8rem;">Tenant accesses encrypted document room on mobile browser. Verifies via Aadhaar OTP in under 60 seconds.</p>
+                </div>
+              </div>
+
+              <!-- Stage 08 Preview Screen -->
+              <div class="sticky-stage-screen" data-stage="7">
+                <h4 style="font-size:1.15rem; margin-bottom:12px; color:var(--zap-dark);">🏆 08 — Final Legally Enforceable PDF</h4>
+                <p style="font-size:0.9rem; color:var(--zap-text-muted); margin-bottom:20px;">
+                  Complete 100% legal agreement with audit trail, IP timestamp log, and verifiable QR code delivered instantly.
+                </p>
+                <div style="background:var(--zap-success-light); border:1px solid var(--zap-success-border); padding:18px; border-radius:12px; text-align:center;">
+                  <div style="font-weight:700; color:var(--zap-success); font-size:1rem; margin-bottom:6px;">✓ Agreement Executed Successfully</div>
+                  <p style="font-size:0.82rem; color:var(--zap-text-muted); margin-bottom:12px;">Archived in tamper-proof cloud vault for 5 years.</p>
+                  <button class="zap-btn zap-btn-primary" style="padding:8px 16px; font-size:0.84rem;">Download Signed Copy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT SCROLLING NARRATIVE STEPS -->
+          <div class="scroll-right-col">
+            <!-- Step 01 -->
+            <div class="story-step-card active" data-step-index="0">
+              <span class="step-card-badge">STEP 01</span>
+              <h3>Create Rental Agreement</h3>
+              <p>
+                Fill out the owner, tenant, and property details in an intuitive conversational form. Pick your rental period, deposit amount, escalation terms, and custom amenities clauses.
+              </p>
+              <div class="step-card-pills">
+                <span class="step-pill">Pre-vetted Clauses</span>
+                <span class="step-pill">11-Month or Multi-Year</span>
+                <span class="step-pill">Commercial / Residential</span>
+              </div>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="story-step-card" data-step-index="1">
+              <span class="step-card-badge">STEP 02</span>
+              <h3>Validate Property & Jurisdiction</h3>
+              <p>
+                ZapDocs automatically checks the property PIN code against municipal and state stamping authorities. It checks if mandatory registration is triggered and assigns the right stamp rate.
+              </p>
+              <div class="step-card-pills">
+                <span class="step-pill">Auto State Detection</span>
+                <span class="step-pill">Municipal Check</span>
+                <span class="step-pill">Stamp Duty Rules</span>
+              </div>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="story-step-card" data-step-index="2">
+              <span class="step-card-badge">STEP 03</span>
+              <h3>Review Draft & Transparent Pricing</h3>
+              <p>
+                Read every clause in clear language before making any commitment. Review the itemized cost breakdown including government stamp duty and platform fee with zero surprise charges.
+              </p>
+              <div class="step-card-pills">
+                <span class="step-pill">Live Draft Preview</span>
+                <span class="step-pill">Itemized Receipt</span>
+                <span class="step-pill">Zero Hidden Fees</span>
+              </div>
+            </div>
+
+            <!-- Step 04 -->
+            <div class="story-step-card" data-step-index="3">
+              <span class="step-card-badge">STEP 04</span>
+              <h3>Secure Instant Payment</h3>
+              <p>
+                Complete payment securely using UPI, Google Pay, PhonePe, Cards, or Net Banking. Payment verification runs immediately to unlock the government stamping queue.
+              </p>
+              <div class="step-card-pills">
+                <span class="step-pill">Instant UPI QR</span>
+                <span class="step-pill">RBI Compliant</span>
+                <span class="step-pill">Automated Verification</span>
+              </div>
+            </div>
+
+            <!-- Step 05 -->
+            <div class="story-step-card" data-step-index="4">
+              <span class="step-card-badge">STEP 05</span>
+              <h3>Procure Official eStamp</h3>
+              <p>
+                ZapDocs bridges directly to state treasury portals to mint a non-judicial e-stamp paper with a unique GRN/Certificate number and verifiable QR code merged onto the first page.
+              </p>
+              <div class="step-card-pills">
+                <span class="step-pill">Official Treasury GRN</span>
+                <span class="step-pill">QR Verifiable</span>
+                <span class="step-pill">No Notary Queue</span>
+              </div>
+            </div>
+
+            <!-- Step 06 -->
+            <div class="story-step-card" data-step-index="5">
+              <span class="step-card-badge">STEP 06</span>
+              <h3>Lessor (Owner) eSign</h3>
+              <p>
+                The owner receives an Aadhaar OTP verification prompt. With a single click and 6-digit OTP, the digital signature is cryptographically fused into the document under IT Act 2000.
+              </p>
+              <div class="step-card-pills">
+                <span class="step-pill">UIDAI Aadhaar OTP</span>
+                <span class="step-pill">SHA-256 Hash</span>
+                <span class="step-pill">Legal Validity</span>
+              </div>
+            </div>
+
+            <!-- Step 07 -->
+            <div class="story-step-card" data-step-index="6">
+              <span class="step-card-badge">STEP 07</span>
+              <h3>Second Signer: Guest Tenant Signing</h3>
+              <p>
+                Tenants shouldn't have to download an app or create an account. They receive a secure guest signing link over WhatsApp and SMS, review the agreement on their phone, and sign via OTP.
+              </p>
+              <div class="step-card-pills">
+                <span class="step-pill">No Sign-up Needed</span>
+                <span class="step-pill">WhatsApp Link</span>
+                <span class="step-pill">Mobile-Optimized</span>
+              </div>
+            </div>
+
+            <!-- Step 08 -->
+            <div class="story-step-card" data-step-index="7">
+              <span class="step-card-badge">STEP 08</span>
+              <h3>Final Enforceable Agreement</h3>
+              <p>
+                Both signatures are reconciled with a cryptographic audit log showing timestamp, IP address, and verification records. Both parties get the final PDF instantly.
+              </p>
+              <div class="step-card-pills">
+                <span class="step-pill">Tamper-Proof Audit Log</span>
+                <span class="step-pill">Bank & Passport Proof</span>
+                <span class="step-pill">Cloud Vault</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. DOCUMENT ANIMATION SECTION — THE INTERACTIVE DOCUMENT ENGINE
+         ========================================================================= -->
+    <section class="zap-doc-engine" id="document-engine">
+      <div class="zap-container">
+        <div class="story-header reveal-item">
+          <div class="zap-badge">Document Engine</div>
+          <h2>Watch a blank draft transform into an active legal deed.</h2>
+          <p>
+            Toggle through document states to observe how data fields populate, state seals attach, and biometric signatures bind together.
+          </p>
+        </div>
+
+        <div class="doc-stage-card reveal-scale">
+          <!-- Controls Bar -->
+          <div class="doc-engine-controls">
+            <span style="font-size:0.88rem; font-weight:700; color:var(--zap-dark);">Lifecycle Stage:</span>
+            <div class="doc-engine-tabs">
+              <button type="button" class="doc-engine-tab active" data-doc-stage="final">Final Document (Complete)</button>
+              <button type="button" class="doc-engine-tab" data-doc-stage="signed">Signed by Parties</button>
+              <button type="button" class="doc-engine-tab" data-doc-stage="estamp">eStamp Attached</button>
+              <button type="button" class="doc-engine-tab" data-doc-stage="populated">Populated Data</button>
+              <button type="button" class="doc-engine-tab" data-doc-stage="blank">Blank Template</button>
+            </div>
+          </div>
+
+          <!-- Document Paper -->
+          <div class="doc-interactive-paper" id="interactiveDocPaper">
+            <!-- Government eStamp Seal Visual -->
+            <div class="estamp-seal-visual" id="docSealElement">
+              <div class="seal-govt-title">Govt. of Karnataka</div>
+              <div class="seal-certificate-id">CERT: IN-KA89021-P</div>
+              <div class="seal-amount">₹500.00</div>
+              <div style="font-size:0.62rem; color:#78350F; margin-top:2px;">e-Stamp Non-Judicial</div>
+            </div>
+
+            <div style="max-width: 620px;">
+              <span class="doc-type-badge">CERTIFIED RENTAL AGREEMENT</span>
+              <h3 style="font-size:1.6rem; color:var(--zap-dark); margin-top:8px; margin-bottom:12px;">Residential Tenancy Deed</h3>
+              
+              <p class="doc-fillable-text" style="font-size:0.95rem; color:var(--zap-text-muted); line-height:1.6; margin-bottom:16px;">
+                This Agreement of Lease is made on this <strong>5th day of October, 2026</strong> between 
+                <strong style="color:var(--zap-primary);">Mr. Aditya K. Sharma</strong> (hereinafter called the LESSOR) and 
+                <strong style="color:var(--zap-primary);">Ms. Sneha Rao</strong> (hereinafter called the LESSEE).
+              </p>
+
+              <div class="doc-clause-box" style="margin-block:20px;">
+                <h4>Demised Premises & Terms</h4>
+                <p class="doc-fillable-text">
+                  The Lessor hereby grants and the Lessee agrees to take on lease Flat No. 402, Oakridge Heights, Indiranagar, Bengaluru - 560038 for a fixed term of 11 months commencing from October 15, 2026 at a monthly rent of ₹38,000/- with an interest-free refundable deposit of ₹1,50,000/-.
+                </p>
+              </div>
+
+              <div class="doc-clause-box">
+                <h4>Maintenance & Jurisdiction</h4>
+                <p class="doc-fillable-text">
+                  Monthly apartment society maintenance of ₹3,500 shall be paid directly by the Lessee. In case of any dispute, the competent courts having jurisdiction in Bengaluru Urban shall govern.
+                </p>
+              </div>
+
+              <!-- Signatures Row -->
+              <div class="doc-signatures-box" style="margin-top:36px;">
+                <div class="sig-slot signed" id="docSigOwner">
+                  <div class="sig-label">Lessor Signature</div>
+                  <div class="sig-ink">Aditya K. Sharma</div>
+                  <div class="sig-name">Verified via Aadhaar OTP (UIDAI)</div>
+                </div>
+                <div class="sig-slot signed" id="docSigTenant">
+                  <div class="sig-label">Lessee Signature (Guest Signer)</div>
+                  <div class="sig-ink">Sneha Rao</div>
+                  <div class="sig-name">Verified via Secure SMS Token</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         7. PAYMENT & PRICING VERIFICATION SECTION
+         ========================================================================= -->
+    <section class="zap-payment-section" id="pricing-calculator">
+      <div class="zap-container">
+        <div class="story-header reveal-item">
+          <div class="zap-badge">Transparent Checkout</div>
+          <h2>Real-time stamp duty calculation & automated verification.</h2>
+          <p>
+            No arbitrary agent markups. Select your state to compute the exact government stamp duty and see how the verification system handles instant fulfillment.
+          </p>
+        </div>
+
+        <!-- 4-Stage Payment Flow Tracker -->
+        <div class="payment-flow-grid reveal-item">
+          <div class="payment-node-card">
+            <div class="payment-node-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h4 style="font-size:1.05rem; margin-bottom:6px;">Agreement Finalized</h4>
+            <p style="font-size:0.82rem; color:var(--zap-text-muted);">Clauses & parties verified</p>
+            <span class="node-status-chip chip-success">Completed</span>
+          </div>
+
+          <div class="payment-node-card">
+            <div class="payment-node-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            </div>
+            <h4 style="font-size:1.05rem; margin-bottom:6px;">Price Calculation</h4>
+            <p style="font-size:0.82rem; color:var(--zap-text-muted);">State duty + ₹499 fee</p>
+            <span class="node-status-chip chip-success">Real-Time</span>
+          </div>
+
+          <div class="payment-node-card verifying">
+            <div class="payment-node-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            </div>
+            <h4 style="font-size:1.05rem; margin-bottom:6px;">Payment Verification</h4>
+            <p style="font-size:0.82rem; color:var(--zap-text-muted);">Webhook to Treasury</p>
+            <span class="node-status-chip chip-in-progress" id="paymentStatusChip">Verification in progress</span>
+          </div>
+
+          <div class="payment-node-card">
+            <div class="payment-node-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h4 style="font-size:1.05rem; margin-bottom:6px;">eStamp Minted</h4>
+            <p style="font-size:0.82rem; color:var(--zap-text-muted);">GRN paper bound</p>
+            <span class="node-status-chip chip-success">Legally Sealed</span>
+          </div>
+        </div>
+
+        <!-- Live Interactive Price Calculator -->
+        <div class="price-calculator-demo reveal-scale">
+          <div class="calc-grid">
+            <div class="calc-field-group">
+              <h3 style="font-size:1.4rem; color:var(--zap-dark);">Calculate Your Agreement Cost</h3>
+              <p style="font-size:0.92rem; color:var(--zap-text-muted); margin-bottom:8px;">
+                Stamp duty varies by state legislation and total contract value.
+              </p>
+
+              <div class="calc-item">
+                <label for="calcState">Jurisdiction / State</label>
+                <select id="calcState">
+                  <option value="Karnataka" selected>Karnataka (Standard ₹500)</option>
+                  <option value="Maharashtra">Maharashtra (0.25% or min ₹1,000)</option>
+                  <option value="Telangana">Telangana (Standard ₹400)</option>
+                  <option value="Delhi">Delhi (Standard ₹500)</option>
+                  <option value="Tamil Nadu">Tamil Nadu (Standard ₹300)</option>
+                </select>
+              </div>
+
+              <div class="calc-item">
+                <label for="calcRent">Monthly Rent (₹)</label>
+                <input type="number" id="calcRent" value="35000" min="5000" step="1000">
+              </div>
+
+              <div class="calc-item">
+                <label for="calcMonths">Tenure Duration</label>
+                <select id="calcMonths">
+                  <option value="11" selected>11 Months (Standard)</option>
+                  <option value="24">24 Months</option>
+                  <option value="36">36 Months</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Calculation Output Receipt -->
+            <div class="calc-receipt-card">
+              <h4>Itemized Summary</h4>
+              <div class="receipt-row">
+                <span>Govt. eStamp Duty:</span>
+                <strong id="calcStampDuty">₹500</strong>
+              </div>
+              <div class="receipt-row">
+                <span>ZapDocs Platform & Drafting:</span>
+                <strong id="calcPlatformFee">₹499</strong>
+              </div>
+              <div class="receipt-row">
+                <span>Dual Aadhaar OTP eSign:</span>
+                <span style="color:var(--zap-success); font-weight:600;">FREE</span>
+              </div>
+              <div class="receipt-row">
+                <span>Encrypted 5-Year Vault:</span>
+                <span style="color:var(--zap-success); font-weight:600;">FREE</span>
+              </div>
+
+              <div class="receipt-row total">
+                <span>Total Payable:</span>
+                <span id="calcTotal" style="color:var(--zap-primary);">₹999</span>
+              </div>
+
+              <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
+                <button type="button" class="zap-btn zap-btn-primary" id="simulatePaymentBtn" style="width:100%;">
+                  Simulate Payment Verification
+                </button>
+                <span style="font-size:0.75rem; text-align:center; color:var(--zap-text-muted);">
+                  Live simulation of state treasury webhook callback
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         8. eSIGN SECTION — DUAL-SIGNER WORKFLOW (OWNER + GUEST TENANT)
+         ========================================================================= -->
+    <section class="zap-esign-section" id="dual-esign">
+      <div class="zap-container">
+        <div class="story-header reveal-item">
+          <div class="zap-badge">Seamless Dual Sign</div>
+          <h2>Owner creates. Tenant signs as guest. No app friction.</h2>
+          <p>
+            Other platforms force tenants to download an app and make accounts. With ZapDocs, the tenant receives a private encrypted link and signs in one tap.
+          </p>
+        </div>
+
+        <div class="esign-workflow-container reveal-item">
+          <!-- Signer 1: Owner -->
+          <div class="signer-card">
+            <div class="signer-header">
+              <div class="signer-avatar">O</div>
+              <div>
+                <h4 style="font-size:1.15rem; color:var(--zap-dark);">
+                  Property Owner (Lessor)
+                  <span class="signer-role-tag tag-owner">Initiator</span>
+                </h4>
+                <p style="font-size:0.85rem; color:var(--zap-text-muted);">Aditya Sharma • Registered Owner</p>
+              </div>
+            </div>
+
+            <div class="signer-step-track">
+              <div class="track-item">
+                <span class="track-check">✓</span>
+                <div><strong>Drafts Agreement:</strong> Sets terms, deposits, and rent amount.</div>
+              </div>
+              <div class="track-item">
+                <span class="track-check">✓</span>
+                <div><strong>Authenticates Identity:</strong> Aadhaar OTP verification via UIDAI.</div>
+              </div>
+              <div class="track-item">
+                <span class="track-check">✓</span>
+                <div><strong>Approves eStamp:</strong> Treasury stamp duty paid and merged.</div>
+              </div>
+            </div>
+
+            <div class="signer-sign-box">
+              <div style="font-size:0.78rem; text-transform:uppercase; color:var(--zap-text-light);">Cryptographic Signature</div>
+              <div class="ink-signature" id="ownerInkDisplay">Aditya K. Sharma</div>
+              <button type="button" class="zap-btn zap-btn-primary" id="signOwnerBtn" style="margin-top:10px; width:100%;">
+                Sign with Aadhaar OTP
+              </button>
+            </div>
+          </div>
+
+          <!-- Signer 2: Tenant (Guest Signer) -->
+          <div class="signer-card">
+            <div class="signer-header">
+              <div class="signer-avatar tenant">T</div>
+              <div>
+                <h4 style="font-size:1.15rem; color:var(--zap-dark);">
+                  Tenant (Lessee)
+                  <span class="signer-role-tag tag-guest">Guest Signer</span>
+                </h4>
+                <p style="font-size:0.85rem; color:var(--zap-text-muted);">Sneha Rao • No Account Required</p>
+              </div>
+            </div>
+
+            <div class="signer-step-track">
+              <div class="track-item">
+                <span class="track-check">✓</span>
+                <div><strong>Direct Mobile Link:</strong> Dispatched via WhatsApp and SMS.</div>
+              </div>
+              <div class="track-item">
+                <span class="track-check">✓</span>
+                <div><strong>Browser Review:</strong> Reads exact draft on any mobile or desktop.</div>
+              </div>
+              <div class="track-item">
+                <span class="track-check">✓</span>
+                <div><strong>Frictionless eSign:</strong> Signs via OTP without passwords or downloads.</div>
+              </div>
+            </div>
+
+            <div class="signer-sign-box">
+              <div style="font-size:0.78rem; text-transform:uppercase; color:var(--zap-text-light);">Tenant Counter-Signature</div>
+              <div class="ink-signature" id="tenantInkDisplay" style="display:none; color:#B45309;">Sneha Rao</div>
+              <p id="tenantLockNotice" style="font-size:0.82rem; color:var(--zap-text-muted); margin-block:8px;">
+                Waiting for Owner signature to unlock tenant guest portal.
+              </p>
+              <button type="button" class="zap-btn zap-btn-ghost" id="signTenantBtn" disabled style="margin-top:4px; width:100%;">
+                Simulate Tenant Guest eSign
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Completion Alert Banner (Hidden until triggered) -->
+        <div id="dualSignCompleteBanner" style="display:none; align-items:center; justify-content:space-between; background:#F0FDF4; border:1px solid #BBF7D0; padding:20px 24px; border-radius:16px; margin-top:32px;" class="reveal-scale">
+          <div style="display:flex; align-items:center; gap:16px;">
+            <div style="width:40px; height:40px; border-radius:50%; background:#16A34A; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-weight:700;">✓</div>
+            <div>
+              <div style="font-weight:700; color:#15803D; font-size:1.05rem;">Agreement Completed & Legally Bound!</div>
+              <div style="font-size:0.88rem; color:#166534;">Audit trail generated with IP timestamp. Download links dispatched to both signers.</div>
+            </div>
+          </div>
+          <button class="zap-btn zap-btn-primary" style="background:#16A34A;">Download Verified PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         FAQ SECTION — ACCORDION
+         ========================================================================= -->
+    <section class="zap-faq-section" id="faq">
+      <div class="zap-container">
+        <div class="story-header reveal-item">
+          <div class="zap-badge">Knowledge Base</div>
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know regarding legal enforceability, stamp duty, and eSign rules.</p>
+        </div>
+
+        <div class="faq-list reveal-item">
+          <div class="faq-card open">
+            <div class="faq-header">
+              <span>Is a digital rental agreement legally valid in Indian courts?</span>
+              <div class="faq-icon">↓</div>
+            </div>
+            <div class="faq-body">
+              Yes, 100%. Digital rental agreements with official state e-Stamp and Aadhaar-based eSign are legally valid and enforceable under the Information Technology Act, 2000 (Section 10A) and the Indian Stamp Act, 1899. They carry the exact same evidentiary standing as a traditional paper contract notarized before an advocate.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <span>Does the tenant need to download the ZapDocs app or create an account?</span>
+              <div class="faq-icon">↓</div>
+            </div>
+            <div class="faq-body">
+              No. ZapDocs features a seamless "Guest Signer" architecture. When the owner executes the agreement, the tenant receives a secure, encrypted token link over WhatsApp and SMS. The tenant can review the entire agreement in any standard mobile or desktop browser and eSign via Aadhaar OTP in under a minute without downloading anything.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <span>How does eStamping work across different states?</span>
+              <div class="faq-icon">↓</div>
+            </div>
+            <div class="faq-body">
+              ZapDocs integrates directly with official state treasury and e-Stamping portals (such as Stock Holding Corporation of India Limited - SHCIL). Depending on your property location (Karnataka, Maharashtra, Delhi, Telangana, Tamil Nadu, etc.), our system generates the non-judicial stamp certificate with a unique verifiable Government Receipt Number (GRN) and cryptographic QR code.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <span>Can I use this agreement for passport, bank, and visa address proof?</span>
+              <div class="faq-icon">↓</div>
+            </div>
+            <div class="faq-body">
+              Yes. Government departments, banks (for account opening and credit cards), passport offices, and telecom providers accept certified eStamped rental agreements with Aadhaar eSign verification trails.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <span>What if I need custom clauses for pets, parking, or commercial usage?</span>
+              <div class="faq-icon">↓</div>
+            </div>
+            <div class="faq-body">
+              Our drafting engine supports full clause customization. You can choose from pre-vetted legal clauses or type in specific mutual arrangements regarding security deposits, painting deductions, maintenance responsibilities, lock-in periods, and termination notice rules.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         FINAL CALL TO ACTION — CINEMATIC APPLE-LIKE CARD
+         ========================================================================= -->
+    <section class="zap-final-cta">
+      <div class="zap-container">
+        <div class="cta-box-card reveal-scale">
+          <div class="zap-badge" style="background:rgba(255,255,255,0.12); color:#38BDF8; border-color:rgba(56,189,248,0.3);">
+            Ready to Begin?
+          </div>
+          <h2>Never queue at a notary or sub-registrar office again.</h2>
+          <p>
+            Create, eStamp, and dual-sign your rental deed today. Available on mobile and desktop in all major Indian cities.
+          </p>
+          <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+            <a href="#workflow" class="zap-btn zap-btn-primary zap-btn-lg" style="background:#2563EB;">
+              Draft Your Agreement Now
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#pricing-calculator" class="zap-btn zap-btn-secondary zap-btn-lg" style="background:rgba(255,255,255,0.08); color:#FFFFFF; border-color:rgba(255,255,255,0.2);">
+              Calculate Stamp Duty
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="zap-footer">
+    <div class="zap-container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="zap-brand" style="margin-bottom:12px;">
+            <div class="zap-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <span>Zap</span>Docs
+          </div>
+          <p>
+            The modern standard for digital rental agreements, official government eStamping, and guest eSigning.
+          </p>
+          <div style="margin-top:16px; font-size:0.8rem; color:var(--zap-text-light);">
+            Compliant with IT Act 2000 & Indian Stamp Act 1899.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><a href="#workflow">8-Step Workflow</a></li>
+            <li><a href="#document-engine">Document Engine</a></li>
+            <li><a href="#pricing-calculator">Stamp Duty Calculator</a></li>
+            <li><a href="#dual-esign">Dual eSign System</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal & Jurisdictions</h5>
+          <ul class="footer-links">
+            <li><a href="#pricing-calculator">Karnataka eStamp</a></li>
+            <li><a href="#pricing-calculator">Maharashtra eStamp</a></li>
+            <li><a href="#pricing-calculator">Delhi Non-Judicial</a></li>
+            <li><a href="#pricing-calculator">Telangana & AP Stamping</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Support & Trust</h5>
+          <ul class="footer-links">
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+            <li><a href="#">Court Admissibility Guide</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 ZapDocs Technologies Private Limited. All rights reserved.</div>
+        <div style="display:flex; gap:20px;">
+          <a href="#">Security Overview</a>
+          <a href="#">256-Bit SSL Certificate</a>
+          <a href="#">System Status: Operational</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ZapDocs Interaction Engine -->
+  <script src="js/zapdocs.js"></script>
+</body>
+</html>
