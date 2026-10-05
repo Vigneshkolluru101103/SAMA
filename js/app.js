@@ -2,7 +2,10 @@
  * SAMA A2Z — Master Application Interactions & Storytelling Logic
  */
 
+let lenisInstance = null;
+
 document.addEventListener('DOMContentLoaded', () => {
+  initLenisSmoothScroll();
   initStickyHeader();
   initSmoothScrollNav();   // <-- locked nav smooth-scroll, does NOT touch DOM order
   initMobileNav();
@@ -15,6 +18,33 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollLinkedMotion();
   initDesktopPointerInteractions();
 });
+
+/* --------------------------------------------------------------------------
+   Lenis Momentum Smooth Scrolling Engine
+   -------------------------------------------------------------------------- */
+function initLenisSmoothScroll() {
+  if (typeof Lenis === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  lenisInstance = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Apple-grade exponential deceleration curve
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1.0,
+    touchMultiplier: 1.6,
+    infinite: false,
+  });
+
+  window.lenis = lenisInstance;
+
+  function raf(time) {
+    lenisInstance.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+}
 
 /* --------------------------------------------------------------------------
    Smooth-Scroll Navigation — LOCKED BEHAVIOUR
@@ -41,15 +71,21 @@ function initSmoothScrollNav() {
       // Calculate the header height so the section isn't hidden behind it
       const header = document.querySelector('.site-header');
       const headerHeight = header ? header.offsetHeight : 0;
+      const targetOffset = -headerHeight - 12;
 
-      // Get the section's distance from the very top of the document
-      const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
-
-      // Scroll — no DOM changes, just viewport movement
-      window.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-      });
+      if (window.lenis) {
+        window.lenis.scrollTo(target, {
+          offset: targetOffset,
+          duration: 1.25,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      } else {
+        const targetTop = target.getBoundingClientRect().top + window.pageYOffset + targetOffset;
+        window.scrollTo({
+          top: targetTop,
+          behavior: 'smooth'
+        });
+      }
 
       // Update the URL hash silently (no page jump)
       history.pushState(null, '', href);
@@ -64,20 +100,30 @@ function initStickyHeader() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
-  let isTicking = false;
-  window.addEventListener('scroll', () => {
-    if (!isTicking) {
-      window.requestAnimationFrame(() => {
-        if (window.scrollY > 20) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-        isTicking = false;
-      });
-      isTicking = true;
+  function updateHeader(scrollY) {
+    if (scrollY > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
     }
-  }, { passive: true });
+  }
+
+  if (window.lenis) {
+    window.lenis.on('scroll', ({ scroll }) => {
+      updateHeader(scroll);
+    });
+  } else {
+    let isTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          updateHeader(window.scrollY);
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    }, { passive: true });
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -263,6 +309,7 @@ function initModalAndForms() {
   function openModal(presetType = '') {
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    if (window.lenis) window.lenis.stop();
     if (presetType && demoForm && demoForm.businessType) {
       demoForm.businessType.value = presetType;
     }
@@ -271,6 +318,7 @@ function initModalAndForms() {
   function closeModal() {
     modal.classList.remove('open');
     document.body.style.overflow = '';
+    if (window.lenis) window.lenis.start();
   }
 
   openBtns.forEach(btn => {
@@ -355,7 +403,7 @@ function initScrollAnimations() {
 
   // Target key sections, cards, and editorial content
   const elementsToReveal = document.querySelectorAll(
-    '.section-header, .card-glass, .problem-card, .service-card, .a2z-stage-card, .hold-card, .trust-item, .editorial-row, .timeline-step-item, .comparison-card, .industry-flow-box'
+    '.section-header, .card-glass, .problem-card, .service-card, .a2z-stage-card, .hold-card, .trust-item, .trust-rule-card, .editorial-row, .timeline-step, .comparison-card, .industry-flow-box'
   );
 
   if (elementsToReveal.length === 0) return;
@@ -368,11 +416,11 @@ function initScrollAnimations() {
     return;
   }
 
-  // Setup initial hidden state
+  // Setup initial hidden state with GPU acceleration
   elementsToReveal.forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)';
+    el.style.transform = 'translate3d(0, 20px, 0)';
+    el.style.transition = 'opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)';
     el.style.willChange = 'opacity, transform';
   });
 
@@ -385,32 +433,35 @@ function initScrollAnimations() {
         let staggerDelay = 0;
         if (parent) {
           const siblings = Array.from(parent.children).filter(c => 
-            c.matches('.section-header, .card-glass, .problem-card, .service-card, .a2z-stage-card, .hold-card, .trust-item, .editorial-row, .timeline-step-item, .comparison-card, .industry-flow-box')
+            c.matches('.section-header, .card-glass, .problem-card, .service-card, .a2z-stage-card, .hold-card, .trust-item, .trust-rule-card, .editorial-row, .timeline-step, .comparison-card, .industry-flow-box')
           );
           const idx = siblings.indexOf(el);
           if (idx > 0) {
-            staggerDelay = Math.min(idx * 50, 300); // 50ms stagger, max 300ms
+            staggerDelay = Math.min(idx * 45, 260); // 45ms stagger, max 260ms
           }
         }
 
         setTimeout(() => {
           el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
+          el.style.transform = 'translate3d(0, 0, 0)';
+          setTimeout(() => {
+            el.style.willChange = '';
+          }, 800);
         }, staggerDelay);
 
         observer.unobserve(el);
       }
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px -30px 0px'
   });
 
   elementsToReveal.forEach(el => observer.observe(el));
 }
 
 /* --------------------------------------------------------------------------
-   Scroll-Linked Motion & Subtle Parallax (RAF-throttled, GPU accelerated)
+   Scroll-Linked Motion & Subtle Parallax (Lenis + RAF GPU accelerated)
    -------------------------------------------------------------------------- */
 function initScrollLinkedMotion() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -420,35 +471,38 @@ function initScrollLinkedMotion() {
   const blob2 = document.querySelector('.hero-glow-blob-2');
   const heroMockup = document.querySelector('.sama-phone-device');
 
-  let latestScrollY = window.pageYOffset;
-  let isTicking = false;
-
-  function updateMotion() {
-    latestScrollY = window.pageYOffset;
-
-    // Micro-parallax: background layers move at subtle 0.04x - 0.05x
-    if (blob1 && latestScrollY < 1200) {
-      blob1.style.transform = `translate3d(0, ${(latestScrollY * 0.05).toFixed(1)}px, 0)`;
+  function updateParallax(scrollY) {
+    // Micro-parallax: background ambient glows float gracefully
+    if (blob1 && scrollY < 1300) {
+      blob1.style.transform = `translate3d(0, ${(scrollY * 0.045).toFixed(1)}px, 0)`;
     }
-    if (blob2 && latestScrollY < 1200) {
-      blob2.style.transform = `translate3d(0, ${(latestScrollY * -0.04).toFixed(1)}px, 0)`;
+    if (blob2 && scrollY < 1300) {
+      blob2.style.transform = `translate3d(0, ${(scrollY * -0.035).toFixed(1)}px, 0)`;
     }
 
     // Subtle gentle depth on hero product visual
-    if (heroMockup && latestScrollY < 900) {
-      const shiftY = Math.min(16, latestScrollY * 0.035).toFixed(1);
+    if (heroMockup && scrollY < 950) {
+      const shiftY = Math.min(18, scrollY * 0.03).toFixed(1);
       heroMockup.style.transform = `translate3d(0, ${shiftY}px, 0)`;
     }
-
-    isTicking = false;
   }
 
-  window.addEventListener('scroll', () => {
-    if (!isTicking) {
-      window.requestAnimationFrame(updateMotion);
-      isTicking = true;
-    }
-  }, { passive: true });
+  if (window.lenis) {
+    window.lenis.on('scroll', ({ scroll }) => {
+      updateParallax(scroll);
+    });
+  } else {
+    let isTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          updateParallax(window.pageYOffset);
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    }, { passive: true });
+  }
 }
 
 /* --------------------------------------------------------------------------
